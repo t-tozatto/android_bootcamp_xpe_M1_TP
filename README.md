@@ -1,1 +1,2 @@
-# android_bootcamp_xpe_M1_TP
+# Android bootcamp in XPE
+Pratical work for module 1
