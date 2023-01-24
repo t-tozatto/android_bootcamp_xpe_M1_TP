@@ -4,4 +4,6 @@
     <string name="product_name">Nome do produto</string>
     <string name="quantity">Quantidade</string>
     <string name="add">Adicionar</string>
+    <string name="invalid_product">Nome do produto inválido!</string>
+    <string name="invalid_quantity">Quantidade inválida!</string>
 </resources>

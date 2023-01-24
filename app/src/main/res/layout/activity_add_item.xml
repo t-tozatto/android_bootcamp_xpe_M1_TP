@@ -20,8 +20,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textCapCharacters|textAutoComplete|textAutoCorrect"
-            android:hint="@string/product_name" />
+            android:inputType="textCapWords|textAutoComplete|textAutoCorrect"
+            android:hint="@string/product_name"
+            android:id="@+id/etProductName"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -39,7 +40,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:hint="@string/quantity" />
+            android:hint="@string/quantity"
+            android:id="@+id/etQuantity"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
