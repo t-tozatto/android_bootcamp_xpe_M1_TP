@@ -1,12 +1,15 @@
 package br.com.ttozatto.m1tp.ui.additems
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.view.isEmpty
 import br.com.ttozatto.m1tp.R
+import br.com.ttozatto.m1tp.data.Product
 import br.com.ttozatto.m1tp.databinding.ActivityAddItemBinding
 import br.com.ttozatto.m1tp.databinding.ActivityMainBinding
+import br.com.ttozatto.m1tp.ui.main.MainActivity
 
 class AddItemActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddItemBinding
@@ -30,11 +33,15 @@ class AddItemActivity : AppCompatActivity() {
         if (!validateItem())
             return;
 
-        Toast.makeText(
-            applicationContext,
-            "${binding.etProductName.text.toString()} - ${binding.etQuantity.text.toString()}",
-            Toast.LENGTH_SHORT
-        ).show()
+        binding.apply {
+            Intent().apply {
+                putExtra(MainActivity.RESULT_ADD_ITEM,
+                    Product(etProductName.text.toString(),
+                        Integer.parseInt(etQuantity.text.toString())))
+
+                setResult(RESULT_OK, this)
+            }
+        }
 
         finish()
     }

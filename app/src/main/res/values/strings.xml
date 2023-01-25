@@ -6,4 +6,5 @@
     <string name="add">Adicionar</string>
     <string name="invalid_product">Nome do produto inválido!</string>
     <string name="invalid_quantity">Quantidade inválida!</string>
+    <string name="button_to_add_new_items_to_shop">Button to add new items to shop.</string>
 </resources>
