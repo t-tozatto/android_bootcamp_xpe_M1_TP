@@ -13,13 +13,22 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/default_padding">
 
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/cbActive"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/tvProduct"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cbActive"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@tools:sample/full_names"
             />
@@ -29,7 +38,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvQuantity"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cbActive"
             app:layout_constraintTop_toBottomOf="@id/tvProduct"
             tools:text="@tools:sample/lorem"
             />

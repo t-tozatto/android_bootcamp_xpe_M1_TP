@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -59,7 +60,10 @@ class MainActivity : AppCompatActivity() {
                 visibilityEmptyMessage(true)
             else {
                 visibilityEmptyMessage(false)
-                binding.rvProducts.adapter = ProductAdapter(it)
+                binding.rvProducts.adapter = ProductAdapter(it, itemClickCallback = fun(status: Boolean, position: Int) {
+                    purchasedProductChanged(status, position)
+                })
+                binding.tvProductCount.text = "${it.size} itens";
             }
         }
     }
@@ -68,6 +72,7 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             tvEmptyList.visibility = if (visibility) View.VISIBLE else View.GONE
             rvProducts.visibility = if (visibility) View.GONE else View.VISIBLE
+            tvProductCount.visibility = if (visibility) View.GONE else View.VISIBLE
         }
     }
 
@@ -89,5 +94,9 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val RESULT_ADD_ITEM = "ADD_ITEM_OBJECT"
+    }
+
+    private fun purchasedProductChanged(status: Boolean, position: Int){
+        viewModel.updatePurchasedProduct(status, position)
     }
 }

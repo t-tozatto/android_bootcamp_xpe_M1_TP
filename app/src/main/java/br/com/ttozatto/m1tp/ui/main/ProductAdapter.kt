@@ -3,11 +3,13 @@ package br.com.ttozatto.m1tp.ui.main
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import br.com.ttozatto.m1tp.data.Product
 import br.com.ttozatto.m1tp.databinding.ListProductsBinding
 
-class ProductAdapter(private val productList: List<Product>)
+class ProductAdapter(private val productList: List<Product>,
+                     private val itemClickCallback: ((Boolean, Int) -> Unit)?)
     : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
         private lateinit var binding: ListProductsBinding
@@ -17,6 +19,7 @@ class ProductAdapter(private val productList: List<Product>)
                 binding.apply {
                     tvProduct.text = product.Name
                     tvQuantity.text = product.Quantity.toString()
+                    cbActive.isChecked = product.Purchased
                 }
             }
         }
@@ -35,5 +38,9 @@ class ProductAdapter(private val productList: List<Product>)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(product = productList[position])
+
+        binding.cbActive.setOnCheckedChangeListener { _, isChecked ->
+            itemClickCallback?.invoke(isChecked, position)
+        }
     }
 }

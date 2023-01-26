@@ -5,4 +5,5 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Product(val Name: String,
-    val Quantity: Int) : Parcelable
+    val Quantity: Int,
+    var Purchased: Boolean = false) : Parcelable

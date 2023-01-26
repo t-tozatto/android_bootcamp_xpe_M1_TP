@@ -9,5 +9,9 @@ class ProductMemoryRepository(list: MutableList<Product>) {
         memoryList.add((product))
     }
 
+    fun updatePurchaseProduct(status: Boolean, position: Int){
+        memoryList[position].Purchased = status
+    }
+
     fun getAll() = memoryList.toList()
 }
